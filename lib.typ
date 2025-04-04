@@ -97,7 +97,7 @@ the invoice number.",
       [],
       [
         #set align(end)
-        Summe:
+        Sum:
       ],
       [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})€],
       table.hline(start: 2),
@@ -146,12 +146,13 @@ the invoice number.",
       .at("gender", default: (:))
       .at("account_holder", default: "Account Holder")): #bank-account.name \
     Bank: #bank-account.bank \
-    Sort Code: *#iban(bank-account.iban)* \
+    IBAN: *#iban(bank-account.iban)* \
     Account Number: #bank-account.bic
-  ], qr-code(epc-qr-content, height: 4em))
+  ]) 
+  // qr-code(epc-qr-content, height: 4em))
 
   [
-    Tax Number: #author.tax_nr
+    // Tax Number: #author.tax_nr
 
     #v(0.5em)
 
