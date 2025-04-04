@@ -1,9 +1,9 @@
 [package]
-name = "classy-german-invoice"
+name = "nahbaste-invoice"
 version = "0.3.1"
 compiler = "0.10.0"
 entrypoint = "lib.typ"
-repository = "https://github.com/erictapen/typst-invoice"
+repository = "https://github.com/nabaste/typst-invoice"
 authors = ["Kerstin Humm <@erictapen>"]
 license = "MIT-0"
 description = "Minimalistic invoice for germany based freelancers"
