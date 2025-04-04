@@ -18,10 +18,10 @@
   ),
   // Author
   (
-    name: "Kerstin Humm",
-    street: "Straße der Privatsphäre und Stille 1",
-    zip: "54321",
-    city: "Potsdam",
+    name: "Nahuel Basterretche",
+    street: "2 Lodge Mansions Parade, Green Lanes",
+    zip: "N13 5TS",
+    city: "London",
     tax_nr: "12345/67890",
     // optional signature, can be omitted
     signature: image("example_signature.png", width: 5em)

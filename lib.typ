@@ -16,15 +16,15 @@
   // Name and bank account details of the entity receiving the money
   bank-account,
   // The text to display below the items
-  invoice-text: "Vielen Dank für die Zusammenarbeit. Die Rechnungssumme überweisen Sie bitte
-    innerhalb von 14 Tagen ohne Abzug auf mein unten genanntes Konto unter Nennung
-    der Rechnungsnummer.",
+  invoice-text: "Thank you for your cooperation. Please transfer the invoice amount
+within 14 days without deductions to my account below, stating
+the invoice number.",
   // Optional VAT
   vat: 0.19,
   // Check if the german § 19 UStG applies
   kleinunternehmer: false,
 ) = {
-  set text(lang: "de", region: "DE")
+  set text(lang: "en", region: "UK")
 
   set page(paper: "a4", margin: (x: 20%, y: 20%, top: 20%, bottom: 20%))
 
@@ -72,7 +72,7 @@
   v(4em)
 
   grid(columns: (1fr, 1fr), align: bottom, heading[
-    Rechnung \##invoice-nr
+    Invoice \##invoice-nr
   ], [
     #set align(right)
     #author.city, *#invoice-date.display("[day].[month].[year]")*
@@ -91,7 +91,7 @@
       columns: (auto, 10fr, auto),
       align: ((column, row) => if column == 1 { left } else { right }),
       table.hline(stroke: (thickness: 0.5pt)),
-      [*Pos.*], [*Beschreibung*], [*Preis*],
+      [*Num.*], [*Description*], [*Cost*],
       table.hline(),
       ..items, table.hline(),
       [],
@@ -114,22 +114,22 @@
       )} else {([], [], [], [])},
       [
         #set align(end)
-        *Gesamt:*
+        *Total:*
       ],
-      [*#format_currency(total)€*],
+      [*#format_currency(total)£*],
       table.hline(start: 2),
     )
   ]
 
   v(2em)
 
-  [
-    #set text(size: 0.8em)
-    #invoice-text
-    #if kleinunternehmer [
-      Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
-    ]
-  ]
+  // [
+  //   #set text(size: 0.8em)
+  //   #invoice-text
+  //   #if kleinunternehmer [
+  //     Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
+  //   ]
+  // ]
 
   v(1em)
 
@@ -144,18 +144,18 @@
     #set text(number-type: "lining")
     #(bank-account
       .at("gender", default: (:))
-      .at("account_holder", default: "Kontoinhaberin")): #bank-account.name \
-    Kreditinstitut: #bank-account.bank \
-    IBAN: *#iban(bank-account.iban)* \
-    BIC: #bank-account.bic
+      .at("account_holder", default: "Account Holder")): #bank-account.name \
+    Bank: #bank-account.bank \
+    Sort Code: *#iban(bank-account.iban)* \
+    Account Number: #bank-account.bic
   ], qr-code(epc-qr-content, height: 4em))
 
   [
-    Steuernummer: #author.tax_nr
+    Tax Number: #author.tax_nr
 
     #v(0.5em)
 
-    Mit freundlichen Grüßen
+    Best regards
 
     #if "signature" in author [
       #scale(origin: left, x: 400%, y: 400%, author.signature)

@@ -1,4 +1,4 @@
-# German invoice template
+# Iinvoice template
 
 A template for writing invoices, inspired by the [beautiful LaTeX template by @mrzool.](https://github.com/mrzool/invoice-boilerplate/)
 
