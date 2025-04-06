@@ -4,16 +4,12 @@
   // Invoice number
   "2025-003",
   // Invoice date
-  datetime(year: 2025, month: 03, day: 03),
+  datetime(year: 2025, month: 04, day: 07),
   // Items
   (
     (
-      description: "Unreal Engine UI Development",
-      price: 2000,
-    ),
-    (
-      description: "Interface Design Consultation",
-      price: 500
+      description: "Mixed Reality Unity Development",
+      price: 500,
     ),
   ),
   // Author
@@ -28,14 +24,14 @@
   ),
   // Recipient
   (
-    name: "Territory Studio",
-    street: "132-140 Goswell Road, Clerkenwell",
-    zip: "EC1V 7DY",
+    name: "Hyperactive Developments",
+    street: "415 High Street Suite 111",
+    zip: "E15 4QZ",
     city: "London",
   ),
   // Bank account
   (
-    name: "Nahuel Basterretche",
+    name: "Nahuel Arnaldo Basterretche",
     bank: "Wise Payments Ltd.",
     iban: "GB66TRWI23147050822066",
     bic: "50822066",
