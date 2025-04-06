@@ -24,7 +24,7 @@
     city: "London",
     tax_nr: "12345/67890",
     // optional signature, can be omitted
-    // signature: image("example_signature.png", width: 5em)
+    signature: image("Signature2b.png", width: 5em)
   ),
   // Recipient
   (
@@ -37,8 +37,9 @@
   (
     name: "Nahuel Basterretche",
     bank: "Wise Payments Ltd.",
-    iban: "GB66 TRWI 2314 7050 8220 66",
-    bic: "50822066 23-14-70",
+    iban: "GB66TRWI23147050822066",
+    bic: "50822066",
+    sort: "23-14-70",
     // There is currently only one gendered term in this template.
     // You can overwrite it, or omit it and just choose the default.
     gender: (account_holder: "Account Holder")

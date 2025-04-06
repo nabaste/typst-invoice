@@ -16,9 +16,7 @@
   // Name and bank account details of the entity receiving the money
   bank-account,
   // The text to display below the items
-  invoice-text: "Thank you for your cooperation. Please transfer the invoice amount
-within 14 days without deductions to my account below, stating
-the invoice number.",
+  invoice-text: "Thank you for your cooperation. Please transfer the invoice amount within 14 days without deductions to my account below, stating the invoice number.",
   // Optional VAT
   vat: 0.19,
   // Check if the german § 19 UStG applies
@@ -81,7 +79,7 @@ the invoice number.",
   let total = items.map((item) => item.price).sum()
 
   let items = items.enumerate().map(
-    ((id, item)) => ([#str(id + 1).], [#item.description], [#format_currency(item.price)€],),
+    ((id, item)) => ([#str(id + 1).], [#item.description], [#format_currency(item.price)£],),
   ).flatten()
 
   [
@@ -99,7 +97,7 @@ the invoice number.",
         #set align(end)
         Sum:
       ],
-      [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})€],
+      [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})£],
       table.hline(start: 2),
       ..if not kleinunternehmer {(
         [],
@@ -108,7 +106,7 @@ the invoice number.",
           #set align(end)
           #str(vat * 100)% Mehrwertsteuer:
         ],
-        [#format_currency(vat * total)€],
+        [#format_currency(vat * total)£],
         table.hline(start: 2),
         [],
       )} else {([], [], [], [])},
@@ -123,13 +121,13 @@ the invoice number.",
 
   v(2em)
 
-  // [
-  //   #set text(size: 0.8em)
-  //   #invoice-text
-  //   #if kleinunternehmer [
-  //     Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
-  //   ]
-  // ]
+  [
+    #set text(size: 0.8em)
+    #invoice-text
+    // #if kleinunternehmer [
+    //   Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
+    // ]
+  ]
 
   v(1em)
 
@@ -139,7 +137,7 @@ the invoice number.",
     "BCD\n" + "002\n" + "1\n" + "SCT\n" + bank-account.bic + "\n" + bank-account.name + "\n" + bank-account.iban + "\n" + "EUR" + format_currency(total, locale: "en") + "\n" + "\n" + invoice-nr + "\n" + "\n" + "\n"
   )
 
-  grid(columns: (1fr, 1fr), gutter: 1em, align: top, [
+  grid(columns: (2fr, 1fr), gutter: 1em, align: top, [
     #set par(leading: 0.40em)
     #set text(number-type: "lining")
     #(bank-account
@@ -147,9 +145,10 @@ the invoice number.",
       .at("account_holder", default: "Account Holder")): #bank-account.name \
     Bank: #bank-account.bank \
     IBAN: *#iban(bank-account.iban)* \
-    Account Number: #bank-account.bic
+    Account Number: #bank-account.bic \
+    Sort Code: #bank-account.sort
   ]) 
-  // qr-code(epc-qr-content, height: 4em))
+  //qr-code(epc-qr-content, height: 6em)
 
   [
     // Tax Number: #author.tax_nr
